@@ -2,64 +2,53 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cẩm Nang Overleaf Tiếng Việt &amp; Bài Tập Thực Hành</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Cẩm Nang Overleaf Tiếng Việt &amp; 4 Bài Tập Thực Hành</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
   <style>
     /* ==========================================================================
-       RESET & ROOT VARIABLES (MINIMALIST & ULTRA-CLEAN PALETTE)
+       RESET & ROOT PALETTE (TỐI GIẢN - TRUNG TÍNH - TINH TẾ)
        ========================================================================== */
     :root {
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-mono: 'JetBrains Mono', Consolas, monospace;
       
-      /* Pure & Neutral Palette */
       --bg-base: #f8fafc;
       --bg-surface: #ffffff;
       --bg-subtle: #f1f5f9;
-      --bg-card: #ffffff;
       
       --border-subtle: #e2e8f0;
       --border-medium: #cbd5e1;
-      --border-focus: #94a3b8;
       
       --text-main: #090d16;
       --text-secondary: #475569;
       --text-muted: #64748b;
-      --text-faint: #94a3b8;
       
-      /* Subtle Emerald / Overleaf signature touch */
+      /* Gam màu tối giản với điểm nhấn Emerald thanh lịch */
       --brand: #059669;
       --brand-dark: #047857;
       --brand-surface: #ecfdf5;
       --brand-border: #a7f3d0;
       
-      /* Dark Code Editor */
+      /* Dark Editor */
       --editor-bg: #0d1117;
       --editor-topbar: #161b22;
       --editor-border: #30363d;
       --editor-text: #e6edf3;
-      --editor-comment: #8b949e;
-      --editor-keyword: #ff7b72;
-      --editor-cmd: #79c0ff;
-      --editor-arg: #d2a8ff;
-      --editor-str: #a5d6ff;
       
-      /* Shadows & Radii */
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
       --radius-pill: 9999px;
       
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
-      --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.07), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
-      --shadow-window: 0 25px 50px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0,0,0,0.06);
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+      --shadow-window: 0 12px 30px -6px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0,0,0,0.05);
     }
 
     * {
@@ -70,77 +59,64 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
       font-family: var(--font-sans);
       background-color: var(--bg-base);
       color: var(--text-main);
-      line-height: 1.68;
-      font-size: 15.5px;
+      line-height: 1.65;
+      font-size: 15px;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      padding-bottom: 120px;
+      overflow-x: hidden;
+      width: 100%;
     }
 
-    /* Subtle background grid pattern */
-    .bg-grid {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 480px;
-      background-image: radial-gradient(rgba(148, 163, 184, 0.18) 1px, transparent 1px);
-      background-size: 24px 24px;
-      mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
+    /* Container */
     .container {
-      max-width: 1040px;
+      width: 100%;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 0 28px;
-      position: relative;
-      z-index: 1;
+      padding: 0 20px;
     }
 
     /* ==========================================================================
-       STICKY TOPBAR
+       TOPBAR (RESPONSIVE CHO MOBILE)
        ========================================================================== */
     .topbar {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
-      transition: all 0.2s ease;
     }
 
     .topbar-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 64px;
+      height: 58px;
+      gap: 12px;
     }
 
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-weight: 700;
-      font-size: 16px;
+      font-size: 15px;
       color: var(--text-main);
       text-decoration: none;
-      letter-spacing: -0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .brand-badge-icon {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: var(--radius-sm);
       background: var(--brand);
       color: white;
@@ -148,29 +124,38 @@
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 13px;
-      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
+      font-size: 12px;
     }
 
     .top-nav {
       display: flex;
       align-items: center;
       gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 0;
+    }
+
+    .top-nav::-webkit-scrollbar {
+      display: none;
     }
 
     .nav-btn {
       color: var(--text-secondary);
       text-decoration: none;
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 600;
-      padding: 7px 14px;
+      padding: 6px 12px;
       border-radius: var(--radius-pill);
+      white-space: nowrap;
       transition: all 0.15s ease;
+      background: transparent;
     }
 
     .nav-btn:hover {
-      color: var(--text-main);
       background: var(--bg-subtle);
+      color: var(--text-main);
     }
 
     .nav-btn.active {
@@ -182,30 +167,21 @@
        HERO HEADER
        ========================================================================== */
     header {
-      padding: 64px 0 44px;
-      text-align: left;
-    }
-
-    .hero-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
+      padding: 36px 0 28px;
     }
 
     .status-pill {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
-      padding: 5px 14px;
+      padding: 4px 12px;
       border-radius: var(--radius-pill);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
-      box-shadow: var(--shadow-sm);
+      margin-bottom: 14px;
     }
 
     .status-dot {
@@ -213,116 +189,104 @@
       height: 8px;
       border-radius: 50%;
       background: var(--brand);
-      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
     }
 
     h1 {
-      font-size: clamp(30px, 4.2vw, 44px);
+      font-size: clamp(23px, 4vw, 34px);
       font-weight: 800;
-      letter-spacing: -0.035em;
+      letter-spacing: -0.025em;
       color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: 16px;
+      line-height: 1.25;
+      margin-bottom: 12px;
     }
 
     .hero-lead {
-      font-size: 17px;
+      font-size: 15px;
       color: var(--text-secondary);
-      max-width: 740px;
-      line-height: 1.65;
+      max-width: 720px;
+      line-height: 1.6;
     }
 
     /* ==========================================================================
-       SECTION CONTAINERS & HEADINGS
+       SECTION BASICS
        ========================================================================== */
     section {
-      margin-bottom: 64px;
-      scroll-margin-top: 84px;
+      margin-bottom: 48px;
+      scroll-margin-top: 72px;
     }
 
     .section-header {
-      margin-bottom: 28px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      margin-bottom: 22px;
     }
 
     .section-title-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      margin-bottom: 6px;
     }
 
     .section-index {
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--brand);
       background: var(--brand-surface);
       border: 1px solid var(--brand-border);
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     h2 {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.02em;
       color: var(--text-main);
     }
 
     .section-desc {
       color: var(--text-muted);
-      font-size: 14.5px;
-      margin-top: 4px;
-      width: 100%;
+      font-size: 14px;
+      display: block;
     }
 
     /* ==========================================================================
-       PHẦN 1: TIMELINE STEPS & IMAGE WINDOW MOCKUPS
+       PHẦN 1: HƯỚNG DẪN CÀI ĐẶT MÔI TRƯỜNG
        ========================================================================== */
     .timeline {
       display: flex;
       flex-direction: column;
-      gap: 36px;
-      position: relative;
+      gap: 24px;
     }
 
     .step-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      box-shadow: var(--shadow-md);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .step-card:hover {
-      border-color: var(--border-medium);
-      box-shadow: var(--shadow-lg);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-sm);
     }
 
     .step-header {
       display: flex;
       align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 20px;
+      gap: 14px;
+      margin-bottom: 16px;
     }
 
     .step-badge {
-      width: 34px;
-      height: 34px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       background: var(--text-main);
       color: white;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 13.5px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -335,37 +299,35 @@
     }
 
     .step-title-wrap h3 {
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 700;
       color: var(--text-main);
-      letter-spacing: -0.015em;
       margin-bottom: 4px;
     }
 
     .step-title-wrap p {
       color: var(--text-secondary);
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: 14.5px;
+      line-height: 1.55;
     }
 
     .step-key-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
       margin-top: 10px;
     }
 
     .step-key-item {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: var(--bg-subtle);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-pill);
-      padding: 4px 12px;
-      font-size: 13px;
-      color: var(--text-main);
-      font-weight: 500;
+      padding: 3px 10px;
+      font-size: 12.5px;
+      color: var(--text-secondary);
     }
 
     .step-key-item strong {
@@ -377,23 +339,17 @@
     .window-mockup {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-sm);
       overflow: hidden;
       box-shadow: var(--shadow-window);
-      margin-top: 20px;
+      margin-top: 16px;
       cursor: zoom-in;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .window-mockup:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.08);
     }
 
     .window-header {
       background: #f8fafc;
       border-bottom: 1px solid var(--border-subtle);
-      padding: 10px 16px;
+      padding: 8px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -401,12 +357,12 @@
 
     .window-dots {
       display: flex;
-      gap: 6px;
+      gap: 5px;
     }
 
     .dot {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
     }
     .dot-close { background: #f87171; }
@@ -414,26 +370,24 @@
     .dot-max { background: #34d399; }
 
     .window-title {
-      font-size: 12.5px;
+      font-size: 11.5px;
       font-weight: 600;
       color: var(--text-muted);
       font-family: var(--font-mono);
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 180px;
     }
 
     .window-action-hint {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--brand);
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      white-space: nowrap;
     }
 
     .window-content {
-      position: relative;
       background: #fafafa;
     }
 
@@ -444,43 +398,38 @@
     }
 
     /* ==========================================================================
-       PHẦN 2: IDE CODE WORKBENCH (FULL LATEX TEMPLATE)
+       PHẦN 2: IDE CODE WORKBENCH
        ========================================================================== */
     .editor-card {
       background: var(--editor-bg);
       border: 1px solid var(--editor-border);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       overflow: hidden;
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-md);
     }
 
     .editor-topbar {
       background: var(--editor-topbar);
       border-bottom: 1px solid var(--editor-border);
-      padding: 12px 20px;
+      padding: 10px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-    }
-
-    .editor-tabs {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .editor-tab {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: #0d1117;
       border: 1px solid var(--editor-border);
       color: #f0f6fc;
-      padding: 6px 14px;
+      padding: 4px 10px;
       border-radius: var(--radius-sm);
       font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 12.5px;
     }
 
     .tex-icon {
@@ -488,37 +437,24 @@
       font-weight: 700;
     }
 
-    .editor-meta {
-      font-size: 12px;
-      color: var(--editor-comment);
-      font-family: var(--font-mono);
-    }
-
-    .editor-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
     .btn-action {
       background: #21262d;
       border: 1px solid #363b42;
       color: #c9d1d9;
       font-family: var(--font-sans);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
-      padding: 7px 16px;
+      padding: 6px 14px;
       border-radius: var(--radius-sm);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      transition: all 0.2s ease;
+      gap: 6px;
+      transition: all 0.15s ease;
     }
 
     .btn-action:hover {
       background: #30363d;
-      border-color: #8b949e;
       color: #ffffff;
     }
 
@@ -528,174 +464,172 @@
       color: white;
     }
 
-    .editor-body {
-      position: relative;
-    }
-
     pre code {
       display: block;
-      padding: 24px;
+      padding: 18px;
       color: var(--editor-text);
       font-family: var(--font-mono);
-      font-size: 13.5px;
-      line-height: 1.7;
+      font-size: 13px;
+      line-height: 1.65;
       overflow-x: auto;
-      max-height: 620px;
+      max-height: 520px;
       scrollbar-width: thin;
-      scrollbar-color: #30363d transparent;
+      -webkit-overflow-scrolling: touch;
+      white-space: pre;
+      word-break: normal;
     }
-
-    /* Custom highlight accents */
-    .token-cmd { color: var(--editor-cmd); font-weight: 600; }
-    .token-arg { color: var(--editor-arg); }
-    .token-cmt { color: var(--editor-comment); font-style: italic; }
-    .token-env { color: var(--editor-keyword); font-weight: 600; }
 
     /* ==========================================================================
-       PHẦN 3: BÀI TẬP THỰC HÀNH (INTERACTIVE TABS & CARDS)
+       PHẦN 3: BÀI TẬP THỰC HÀNH (DÒNG CHẢY DỌC TỪ BÀI 1 ĐẾN BÀI 4)
        ========================================================================== */
-    .exercise-wrapper {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      box-shadow: var(--shadow-md);
-    }
-
-    /* Pill Segmented Switcher */
-    .exercise-nav-bar {
-      display: flex;
-      background: var(--bg-subtle);
-      padding: 6px;
-      border-radius: var(--radius-pill);
-      gap: 6px;
-      border: 1px solid var(--border-subtle);
-      margin-bottom: 32px;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .exercise-pill-btn {
-      flex: 1;
-      min-width: 160px;
-      background: transparent;
-      border: none;
-      color: var(--text-secondary);
-      padding: 10px 18px;
-      border-radius: var(--radius-pill);
-      font-family: var(--font-sans);
-      font-size: 13.5px;
-      font-weight: 600;
-      cursor: pointer;
+    /* Quick jump pills cho 4 bài tập */
+    .exercise-quick-nav {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
-      transition: all 0.2s ease;
-      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px;
+      margin-bottom: 24px;
     }
 
-    .exercise-pill-btn:hover {
-      color: var(--text-main);
-    }
-
-    .exercise-pill-btn.active {
-      background: var(--bg-surface);
-      color: var(--text-main);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .exercise-pill-btn.active .ex-num-tag {
-      background: var(--brand);
-      color: white;
-    }
-
-    .ex-num-tag {
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 99px;
-      background: var(--border-subtle);
-      color: var(--text-secondary);
-      transition: all 0.2s;
-    }
-
-    /* Exercise Content Blocks */
-    .exercise-tab-pane {
+    .exercise-quick-nav::-webkit-scrollbar {
       display: none;
-      animation: fadeIn 0.25s ease;
     }
 
-    .exercise-tab-pane.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .ex-hero-box {
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 24px;
-      margin-bottom: 28px;
-    }
-
-    .ex-hero-box h3 {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--text-main);
-      margin-bottom: 8px;
-    }
-
-    .ex-hero-box p {
+    .ex-jump-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
       color: var(--text-secondary);
-      font-size: 15px;
-      line-height: 1.6;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.15s ease;
     }
 
-    /* Checklist of Requirements */
-    .checklist-card {
-      background: var(--bg-subtle);
+    .ex-jump-pill:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+      background: var(--brand-surface);
+    }
+
+    /* Exercise Card Structure */
+    .exercise-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .exercise-card {
+      background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
-      padding: 22px 24px;
-      margin-bottom: 28px;
+      padding: 26px 22px;
+      box-shadow: var(--shadow-sm);
+      scroll-margin-top: 80px;
     }
 
-    .checklist-title {
-      font-size: 13.5px;
+    .ex-header-bar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .ex-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .ex-badge-num {
+      background: var(--brand);
+      color: white;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.5px;
+    }
+
+    .ex-main-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.015em;
+    }
+
+    .ex-tag-badge {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .ex-lead-desc {
+      color: var(--text-secondary);
+      font-size: 14.5px;
+      margin-bottom: 18px;
+      line-height: 1.55;
+    }
+
+    /* Checklist Box */
+    .checklist-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      margin-bottom: 22px;
+    }
+
+    .checklist-label {
+      font-size: 12.5px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       color: var(--text-muted);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .checklist-items {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .checklist-items li {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      font-size: 14.5px;
+      gap: 10px;
+      font-size: 14px;
       color: var(--text-main);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
-    .check-icon {
-      width: 20px;
-      height: 20px;
+    .chk-icon {
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: var(--brand-surface);
       color: var(--brand);
@@ -704,186 +638,163 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
-      margin-top: 1px;
+      margin-top: 2px;
     }
 
-    /* SYNTAX INTERACTIVE GRID CARDS */
-    .syntax-section-title {
-      font-size: 14px;
+    /* Formula Image Box (Bài 2) */
+    .formula-showcase {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .formula-showcase img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      cursor: zoom-in;
+      display: inline-block;
+    }
+
+    .formula-hint {
+      margin-top: 8px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    /* Syntax Grid & Cards */
+    .syntax-heading {
+      font-size: 12.5px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       color: var(--text-muted);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .syntax-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 12px;
-      margin-bottom: 28px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+      margin-bottom: 22px;
     }
 
     .syntax-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      padding: 14px 16px;
+      padding: 12px 14px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      transition: all 0.2s ease;
+      gap: 5px;
       cursor: pointer;
-      position: relative;
+      transition: all 0.15s ease;
     }
 
     .syntax-card:hover {
-      border-color: var(--border-focus);
-      box-shadow: var(--shadow-sm);
-      transform: translateY(-1px);
+      border-color: var(--brand);
+      background: #fafcfb;
     }
 
     .syntax-code-pill {
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
       color: #0369a1;
       background: #f0f9ff;
       border: 1px solid #bae6fd;
-      padding: 3px 8px;
-      border-radius: 6px;
+      padding: 2px 7px;
+      border-radius: 4px;
       display: inline-block;
       align-self: flex-start;
+      word-break: break-all;
     }
 
     .syntax-desc {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--text-secondary);
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
-    .syntax-hint {
-      font-size: 12px;
+    .syntax-click-hint {
+      font-size: 11.5px;
       color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 4px;
     }
 
-    /* SOLUTION DRAWER ACCORDION */
-    .solution-drawer {
+    /* Accordion Solution */
+    .solution-accordion {
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-sm);
       overflow: hidden;
-      margin-top: 20px;
     }
 
-    .solution-btn-toggle {
+    .solution-btn {
       width: 100%;
-      background: #ffffff;
+      background: var(--bg-subtle);
       border: none;
-      padding: 16px 20px;
+      padding: 12px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
       font-family: var(--font-sans);
-      font-size: 14.5px;
+      font-size: 13.5px;
       font-weight: 600;
       color: var(--text-main);
-      transition: background 0.15s ease;
+      text-align: left;
     }
 
-    .solution-btn-toggle:hover {
-      background: var(--bg-subtle);
+    .solution-btn:hover {
+      background: #e9eef5;
     }
 
-    .toggle-badge {
-      font-size: 12px;
-      background: var(--brand-surface);
-      color: var(--brand);
-      border: 1px solid var(--brand-border);
-      padding: 2px 10px;
-      border-radius: 99px;
-      font-weight: 600;
-      margin-left: 10px;
-    }
-
-    .solution-body {
+    .solution-code-drawer {
       display: none;
       border-top: 1px solid var(--border-subtle);
       background: var(--editor-bg);
     }
 
-    .solution-body.open {
+    .solution-code-drawer.open {
       display: block;
     }
 
-    /* Formula Preview Frame in Exercise 2 */
-    .formula-frame {
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      text-align: center;
-      margin: 16px 0 24px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .formula-frame img {
-      max-width: 320px;
-      width: 100%;
-      height: auto;
-      display: inline-block;
-      cursor: zoom-in;
-      border-radius: 6px;
-      transition: transform 0.2s;
-    }
-
-    .formula-frame img:hover {
-      transform: scale(1.02);
-    }
-
-    .formula-caption {
-      margin-top: 8px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    /* ==========================================================================
-       TOAST NOTIFICATION & LIGHTBOX
-       ========================================================================== */
+    /* Toast Notification */
     .toast {
       position: fixed;
-      bottom: 32px;
-      right: 32px;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
       background: #090d16;
       color: #ffffff;
-      padding: 12px 22px;
+      padding: 10px 20px;
       border-radius: var(--radius-pill);
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
-      transform: translateY(100px);
+      gap: 8px;
+      box-shadow: 0 16px 24px rgba(0, 0, 0, 0.2);
       opacity: 0;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 99999;
       pointer-events: none;
+      white-space: nowrap;
     }
 
     .toast.show {
-      transform: translateY(0);
+      transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
 
+    /* Lightbox Modal */
     .lightbox {
       display: none;
       position: fixed;
@@ -894,55 +805,129 @@
       z-index: 10000;
       align-items: center;
       justify-content: center;
-      padding: 32px;
+      padding: 16px;
       cursor: zoom-out;
     }
 
     .lightbox.active {
       display: flex;
-      animation: fadeIn 0.2s ease;
     }
 
     .lightbox-img {
-      max-width: 95vw;
-      max-height: 92vh;
-      border-radius: var(--radius-md);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      max-width: 96vw;
+      max-height: 90vh;
+      border-radius: var(--radius-sm);
       object-fit: contain;
     }
 
-    /* ==========================================================================
-       FOOTER
-       ========================================================================== */
+    /* Footer */
     footer {
       border-top: 1px solid var(--border-subtle);
-      padding: 48px 0;
-      margin-top: 80px;
+      padding: 36px 0;
+      margin-top: 60px;
       text-align: center;
       color: var(--text-muted);
-      font-size: 14px;
+      font-size: 13px;
     }
 
-    footer a {
-      color: var(--brand);
-      text-decoration: none;
-      font-weight: 600;
-    }
+    /* ==========================================================================
+       MEDIA QUERIES CHO MOBILE (TỐI ƯU HOÀN TOÀN MÀN HÌNH NHỎ)
+       ========================================================================== */
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 14px;
+      }
 
-    @media (max-width: 768px) {
-      .topbar-inner { height: 56px; }
-      .container { padding: 0 18px; }
-      .step-card { padding: 22px; }
-      .exercise-wrapper { padding: 20px; }
-      .syntax-grid { grid-template-columns: 1fr; }
-      .exercise-pill-btn { min-width: 130px; font-size: 12.5px; padding: 8px 12px; }
+      .topbar-inner {
+        height: 52px;
+      }
+
+      .brand-logo span {
+        display: none; /* Rút gọn logo trên mobile nhỏ */
+      }
+      .brand-logo::after {
+        content: "Overleaf TeX";
+        font-weight: 700;
+        font-size: 14.5px;
+      }
+
+      .nav-btn {
+        padding: 5px 9px;
+        font-size: 12px;
+      }
+
+      header {
+        padding: 24px 0 20px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .step-card {
+        padding: 18px 14px;
+      }
+
+      .step-header {
+        gap: 10px;
+      }
+
+      .step-badge {
+        width: 26px;
+        height: 26px;
+        font-size: 12px;
+      }
+
+      .step-title-wrap h3 {
+        font-size: 15.5px;
+      }
+
+      .step-title-wrap p {
+        font-size: 13.5px;
+      }
+
+      .step-key-item {
+        font-size: 11.5px;
+        padding: 2px 8px;
+      }
+
+      .window-header {
+        padding: 6px 10px;
+      }
+
+      .window-title {
+        max-width: 140px;
+        font-size: 11px;
+      }
+
+      .exercise-card {
+        padding: 18px 14px;
+      }
+
+      .ex-main-title {
+        font-size: 16px;
+      }
+
+      .checklist-box {
+        padding: 14px 12px;
+      }
+
+      .checklist-items li {
+        font-size: 13px;
+      }
+
+      .syntax-grid {
+        grid-template-columns: 1fr; /* 1 cột duy nhất trên điện thoại */
+      }
+
+      pre code {
+        font-size: 12px;
+        padding: 14px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- BACKGROUND GRID ACCENT -->
-  <div class="bg-grid"></div>
 
   <!-- STICKY TOPBAR -->
   <div class="topbar">
@@ -953,9 +938,9 @@
           <span>Overleaf Tiếng Việt</span>
         </a>
         <nav class="top-nav">
-          <a href="#cai-dat" class="nav-btn active">01. Cài đặt môi trường</a>
+          <a href="#cai-dat" class="nav-btn active">01. Cài đặt</a>
           <a href="#code-mau" class="nav-btn">02. Code mẫu</a>
-          <a href="#bai-tap" class="nav-btn">03. Bài tập thực hành</a>
+          <a href="#bai-tap" class="nav-btn">03. Bài tập (1-4)</a>
         </nav>
       </div>
     </div>
@@ -965,18 +950,13 @@
 
     <!-- HERO HEADER -->
     <header>
-      <div class="hero-meta">
-        <div class="status-pill">
-          <span class="status-dot"></span>
-          <span>TeX Live 2026 • XeLaTeX Unicode Ready</span>
-        </div>
-        <div class="status-pill">
-          <span>Khóa học: Phương Pháp NCKH</span>
-        </div>
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span>Overleaf XeLaTeX • Tiếng Việt Chuẩn 2026</span>
       </div>
-      <h1>Hướng Dẫn Cấu Hình Tiếng Việt &amp; Bài Tập Soạn Thảo LaTeX</h1>
+      <h1>Cẩm Nang Cài Đặt Overleaf &amp; Bài Tập Thực Hành</h1>
       <p class="hero-lead">
-        Tài liệu thực hành chuẩn hóa môi trường Overleaf, gõ tiếng Việt Unicode nguyên bản không lỗi font, kèm theo 4 bài tập thực hành cốt lõi có bảng biểu thức và mã nguồn tham khảo.
+        Tài liệu chuẩn hóa biên dịch XeLaTeX tiếng Việt Unicode trên Overleaf, kèm theo 4 bài tập thực hành cơ bản được trình bày liên tục từ đầu đến cuối dễ dàng theo dõi trên cả máy tính và điện thoại.
       </p>
     </header>
 
@@ -989,28 +969,28 @@
           <span class="section-index">01</span>
           <h2>Hướng Dẫn Thiết Lập Môi Trường</h2>
         </div>
-        <span class="section-desc">Cấu hình trình biên dịch XeLaTeX chỉ với 3 thao tác trực quan</span>
+        <span class="section-desc">Cấu hình trình biên dịch XeLaTeX chỉ với 3 thao tác</span>
       </div>
 
       <div class="timeline">
 
-        <!-- STEP 1 -->
+        <!-- BƯỚC 1 -->
         <div class="step-card">
           <div class="step-header">
             <div class="step-badge">1</div>
             <div class="step-title-wrap">
-              <h3>Mở Bảng Cài Đặt Dự Án (Settings)</h3>
+              <h3>Mở Cài Đặt Dự Án (Settings)</h3>
               <p>
-                Tại màn hình soạn thảo của Overleaf, hãy tìm và nhấp vào biểu tượng <strong>bánh răng Cài đặt (⚙️ Settings)</strong> nằm ở góc dưới cùng bên trái thanh công cụ.
+                Tại màn hình soạn thảo Overleaf, nhấp vào biểu tượng <strong>bánh răng Cài đặt (⚙️ Settings)</strong> nằm ở góc dưới cùng bên trái thanh công cụ.
               </p>
               <div class="step-key-list">
-                <span class="step-key-item">Vị trí: <strong>Góc dưới bên trái màn hình</strong></span>
+                <span class="step-key-item">Vị trí: <strong>Góc dưới bên trái</strong></span>
                 <span class="step-key-item">Biểu tượng: <strong>⚙️ Settings</strong></span>
               </div>
             </div>
           </div>
 
-          <!-- MOCKUP FRAME 1 -->
+          <!-- MOCKUP 1 -->
           <div class="window-mockup" onclick="zoomImage('step1_overleaf_editor.png')">
             <div class="window-header">
               <div class="window-dots">
@@ -1018,11 +998,8 @@
                 <span class="dot dot-min"></span>
                 <span class="dot dot-max"></span>
               </div>
-              <div class="window-title">overleaf.com/project — main.tex</div>
-              <div class="window-action-hint">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-                <span>Nhấp xem ảnh lớn</span>
-              </div>
+              <div class="window-title">overleaf.com/project</div>
+              <div class="window-action-hint">🔍 Nhấp phóng to</div>
             </div>
             <div class="window-content">
               <img src="step1_overleaf_editor.png" alt="Bước 1: Bấm vào biểu tượng cài đặt Settings ở góc dưới bên trái">
@@ -1030,24 +1007,27 @@
           </div>
         </div>
 
-        <!-- STEP 2 -->
+        <!-- BƯỚC 2 -->
         <div class="step-card">
           <div class="step-header">
             <div class="step-badge highlight">2</div>
             <div class="step-title-wrap">
-              <h3>Chuyển Compiler sang XeLaTeX &amp; TeX Live 2026</h3>
+              <h3>Chọn Compiler = XeLaTeX &amp; TeX Live 2026</h3>
               <p>
-                Khi bảng điều khiển <strong>Settings</strong> mở ra, hãy chuyển đổi đúng 2 mục then chốt sau:
+                Khi bảng cài đặt hiện ra:
+                <br>• Nhấp chọn mục <strong>Compiler</strong> ở menu bên trái.
+                <br>• Đổi <strong>Compiler</strong> thành <strong>XeLaTeX</strong> (hỗ trợ Unicode tiếng Việt).
+                <br>• Chọn <strong>TeX Live version</strong> là <strong>2026</strong> (hoặc mới nhất).
               </p>
               <div class="step-key-list">
-                <span class="step-key-item">Menu bên trái: <strong>Compiler</strong></span>
-                <span class="step-key-item">Compiler: <strong>XeLaTeX</strong> (hỗ trợ font Unicode tiếng Việt)</span>
-                <span class="step-key-item">TeX Live version: <strong>2026</strong> (phiên bản mới nhất)</span>
+                <span class="step-key-item">Menu: <strong>Compiler</strong></span>
+                <span class="step-key-item">Compiler: <strong>XeLaTeX</strong></span>
+                <span class="step-key-item">TeX Live: <strong>2026</strong></span>
               </div>
             </div>
           </div>
 
-          <!-- MOCKUP FRAME 2 -->
+          <!-- MOCKUP 2 -->
           <div class="window-mockup" onclick="zoomImage('step2_overleaf_settings.png')">
             <div class="window-header">
               <div class="window-dots">
@@ -1055,11 +1035,8 @@
                 <span class="dot dot-min"></span>
                 <span class="dot dot-max"></span>
               </div>
-              <div class="window-title">Project Settings — Compiler Options</div>
-              <div class="window-action-hint">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-                <span>Nhấp xem ảnh lớn</span>
-              </div>
+              <div class="window-title">Project Settings — Compiler</div>
+              <div class="window-action-hint">🔍 Nhấp phóng to</div>
             </div>
             <div class="window-content">
               <img src="step2_overleaf_settings.png" alt="Bước 2: Cấu hình XeLaTeX">
@@ -1067,23 +1044,23 @@
           </div>
         </div>
 
-        <!-- STEP 3 -->
+        <!-- BƯỚC 3 -->
         <div class="step-card">
           <div class="step-header">
             <div class="step-badge highlight">3</div>
             <div class="step-title-wrap">
-              <h3>Dán Code Mẫu &amp; Bấm Recompile Để Xem Kết Quả</h3>
+              <h3>Dán Code Mẫu &amp; Bấm Recompile Kiểm Tra Kết Quả</h3>
               <p>
-                Đóng hộp thoại Settings, dán mã nguồn kiểm thử vào tệp <code>main.tex</code> và nhấp nút xanh <strong>Recompile</strong> (hoặc bấm <code>Ctrl + Enter</code>). Khung xem trước PDF bên phải sẽ xuất bản tài liệu tiếng Việt hoàn mỹ.
+                Đóng hộp thoại Settings, dán đoạn code ở mục 02 vào tệp <code>main.tex</code> và bấm nút xanh <strong>Recompile</strong> (hoặc bấm <code>Ctrl + Enter</code>). Khung xem trước PDF bên phải sẽ xuất bản tài liệu tiếng Việt hoàn chỉnh.
               </p>
               <div class="step-key-list">
-                <span class="step-key-item">Thao tác: <strong>Bấm Recompile</strong></span>
-                <span class="step-key-item">Kết quả: <strong>Tiêu đề &amp; Mục lục tiếng Việt tự động</strong></span>
+                <span class="step-key-item">Nút bấm: <strong>Recompile</strong></span>
+                <span class="step-key-item">Kết quả: <strong>PDF tiếng Việt chuẩn không lỗi font</strong></span>
               </div>
             </div>
           </div>
 
-          <!-- MOCKUP FRAME 3 -->
+          <!-- MOCKUP 3 -->
           <div class="window-mockup" onclick="zoomImage('step3_overleaf_success.png')">
             <div class="window-header">
               <div class="window-dots">
@@ -1091,11 +1068,8 @@
                 <span class="dot dot-min"></span>
                 <span class="dot dot-max"></span>
               </div>
-              <div class="window-title">PDF Preview — Biên dịch thành công</div>
-              <div class="window-action-hint">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-                <span>Nhấp xem ảnh lớn</span>
-              </div>
+              <div class="window-title">PDF Preview — Kết quả thành công</div>
+              <div class="window-action-hint">🔍 Nhấp phóng to</div>
             </div>
             <div class="window-content">
               <img src="step3_overleaf_success.png" alt="Bước 3: Nhấn nút Recompile và kiểm tra kết quả hiển thị file PDF tiếng Việt">
@@ -1115,24 +1089,19 @@
           <span class="section-index">02</span>
           <h2>Code Mẫu Kiểm Thử Môi Trường</h2>
         </div>
-        <span class="section-desc">Mã nguồn LaTeX chuẩn XeLaTeX đồng bộ hoàn toàn với tài liệu mẫu</span>
+        <span class="section-desc">Mã nguồn LaTeX chuẩn XeLaTeX đồng bộ với tài liệu mẫu</span>
       </div>
 
       <div class="editor-card">
         <div class="editor-topbar">
-          <div class="editor-tabs">
-            <div class="editor-tab">
-              <span class="tex-icon">TEX</span>
-              <span>main.tex</span>
-            </div>
-            <span class="editor-meta">UTF-8 • XeLaTeX</span>
+          <div class="editor-tab">
+            <span class="tex-icon">TEX</span>
+            <span>main.tex</span>
           </div>
-          <div class="editor-controls">
-            <button class="btn-action" onclick="copyCodeBlock('mainTexCode', this)">
-              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-              <span>Sao chép toàn bộ</span>
-            </button>
-          </div>
+          <button class="btn-action" onclick="copyCodeBlock('mainTexCode', this)">
+            <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            <span>Sao chép mã</span>
+          </button>
         </div>
         <div class="editor-body">
           <pre><code id="mainTexCode">\documentclass[12pt,a4paper]{article}
@@ -1224,7 +1193,7 @@ Môi trường biên dịch \LaTeX\ tiếng Việt đã được cấu hình th�
     </section>
 
     <!-- ==========================================================================
-         PHẦN 3: BÀI TẬP THỰC HÀNH (INTERACTIVE TABS)
+         PHẦN 3: BÀI TẬP THỰC HÀNH (TRÌNH BÀY DỌC LIÊN TỤC TỪ BÀI 1 ĐẾN BÀI 4)
          ========================================================================== -->
     <section id="bai-tap">
       <div class="section-header">
@@ -1232,131 +1201,121 @@ Môi trường biên dịch \LaTeX\ tiếng Việt đã được cấu hình th�
           <span class="section-index">03</span>
           <h2>Bài Tập Thực Hành</h2>
         </div>
-        <span class="section-desc">Hệ thống 4 bài tập cơ bản kèm bảng biểu thức và mã nguồn tham khảo</span>
+        <span class="section-desc">Danh sách 4 bài tập cơ bản xếp liên tục từ đầu đến cuối</span>
       </div>
 
-      <div class="exercise-wrapper">
-        
-        <!-- SEGMENTED PILL SWITCHER -->
-        <div class="exercise-nav-bar">
-          <button class="exercise-pill-btn active" onclick="showExerciseTab(event, 'pane-ex1')">
-            <span class="ex-num-tag">01</span>
-            <span>Giới thiệu bản thân</span>
-          </button>
-          <button class="exercise-pill-btn" onclick="showExerciseTab(event, 'pane-ex2')">
-            <span class="ex-num-tag">02</span>
-            <span>Biểu thức toán học</span>
-          </button>
-          <button class="exercise-pill-btn" onclick="showExerciseTab(event, 'pane-ex3')">
-            <span class="ex-num-tag">03</span>
-            <span>Danh sách môn học</span>
-          </button>
-          <button class="exercise-pill-btn" onclick="showExerciseTab(event, 'pane-ex4')">
-            <span class="ex-num-tag">04</span>
-            <span>Chèn hình ảnh Logo</span>
-          </button>
-        </div>
+      <!-- Quick jump mini-nav -->
+      <div class="exercise-quick-nav">
+        <a href="#bai-1" class="ex-jump-pill">Bài 1: Bản thân</a>
+        <a href="#bai-2" class="ex-jump-pill">Bài 2: Toán học</a>
+        <a href="#bai-3" class="ex-jump-pill">Bài 3: Danh sách môn</a>
+        <a href="#bai-4" class="ex-jump-pill">Bài 4: Chèn Logo</a>
+      </div>
 
-        <!-- ==================== TAB BÀI 1 ==================== -->
-        <div id="pane-ex1" class="exercise-tab-pane active">
-          <div class="ex-hero-box">
-            <h3>Bài 1: Giới Thiệu Về Bản Thân</h3>
-            <p>Luyện tập thao tác khởi tạo tài liệu khoa học, khai báo tiêu đề, tác giả, phân mục, định dạng chữ và danh sách liệt kê.</p>
+      <div class="exercise-stack">
+
+        <!-- ==================== BÀI TẬP 1 ==================== -->
+        <div id="bai-1" class="exercise-card">
+          <div class="ex-header-bar">
+            <div class="ex-title-wrap">
+              <span class="ex-badge-num">BÀI 1</span>
+              <h3 class="ex-main-title">Giới Thiệu Về Bản Thân</h3>
+            </div>
+            <span class="ex-tag-badge">Văn bản &amp; Danh sách</span>
           </div>
 
-          <div class="checklist-card">
-            <div class="checklist-title">
-              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-              <span>Các yêu cầu cần hoàn thành:</span>
+          <p class="ex-lead-desc">
+            Luyện tập khai báo tiêu đề tài liệu, tên tác giả, ngày tháng, phân chia đề mục cấp 1, định dạng chữ và tạo danh sách có gạch đầu dòng.
+          </p>
+
+          <div class="checklist-box">
+            <div class="checklist-label">
+              <span>✓ Các yêu cầu cần hoàn thành:</span>
             </div>
             <ul class="checklist-items">
               <li>
-                <span class="check-icon">✓</span>
-                <span>Tạo tiêu đề <strong>“Giới thiệu bản thân”</strong>, ghi họ tên của bạn và lấy ngày tự động hôm nay (<code>\date{\today}</code>).</span>
+                <span class="chk-icon">✓</span>
+                <span>Tạo tiêu đề <strong>“Giới thiệu bản thân”</strong>, ghi họ tên của bạn và ngày hôm nay (<code>\date{\today}</code>).</span>
               </li>
               <li>
-                <span class="check-icon">✓</span>
+                <span class="chk-icon">✓</span>
                 <span>Tạo 3 mục lớn (<code>\section</code>): <strong>“Thông tin chung”</strong>, <strong>“Sở thích”</strong>, <strong>“Mục tiêu”</strong>.</span>
               </li>
               <li>
-                <span class="check-icon">✓</span>
-                <span>Trong mục 1 (Thông tin chung): Giới thiệu ngắn, <strong>in đậm tên trường</strong>, <em>in nghiêng tên ngành</em> và mã số sinh viên.</span>
+                <span class="chk-icon">✓</span>
+                <span>Mục 1 (Thông tin chung): Giới thiệu ngắn, <strong>in đậm tên trường</strong>, <em>in nghiêng tên ngành</em> và mã số sinh viên.</span>
               </li>
               <li>
-                <span class="check-icon">✓</span>
-                <span>Trong mục 2 (Sở thích): Liệt kê 3 sở thích bằng danh sách gạch đầu dòng và <strong>in đậm</strong> tên từng sở thích.</span>
+                <span class="chk-icon">✓</span>
+                <span>Mục 2 (Sở thích): Liệt kê ít nhất 3 sở thích bằng gạch đầu dòng (<code>itemize</code>) và <strong>in đậm</strong> từng sở thích.</span>
               </li>
               <li>
-                <span class="check-icon">✓</span>
-                <span>Trong mục 3 (Mục tiêu): Liệt kê 1 hoặc 2 mục tiêu cá nhân cần đạt được trong học kỳ này.</span>
+                <span class="chk-icon">✓</span>
+                <span>Mục 3 (Mục tiêu): Liệt kê 1 hoặc 2 mục tiêu cá nhân của bạn trong học kỳ.</span>
               </li>
             </ul>
           </div>
 
-          <!-- BẢNG BIỂU THỨC DẠNG CARD CHIP -->
-          <div class="syntax-section-title">
-            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            <span>Biểu thức &amp; Lệnh LaTeX sử dụng (Nhấp để sao chép):</span>
+          <!-- BẢNG BIỂU THỨC DẠNG CHIP -->
+          <div class="syntax-heading">
+            <span>⚡ Biểu thức &amp; Cú pháp LaTeX sử dụng (Nhấp để chép):</span>
           </div>
 
           <div class="syntax-grid">
-            <div class="syntax-card" onclick="copyText('\title{Giới thiệu bản thân}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\title{Giới thiệu bản thân}', this)">
               <span class="syntax-code-pill">\title{...}</span>
-              <span class="syntax-desc">Khai báo tiêu đề bài viết</span>
-              <span class="syntax-hint">Nhấp để chép: <code>\title{...}</code></span>
+              <span class="syntax-desc">Khai báo tiêu đề của bài viết</span>
+              <span class="syntax-click-hint">Chép: <code>\title{...}</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\author{Họ và tên}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\author{Họ và tên}', this)">
               <span class="syntax-code-pill">\author{...}</span>
               <span class="syntax-desc">Khai báo tên tác giả / sinh viên</span>
-              <span class="syntax-hint">Nhấp để chép: <code>\author{...}</code></span>
+              <span class="syntax-click-hint">Chép: <code>\author{...}</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\date{\today}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\date{\\today}', this)">
               <span class="syntax-code-pill">\date{...}</span>
-              <span class="syntax-desc">Khai báo ngày (dùng <code>\today</code> để lấy ngày tự động)</span>
-              <span class="syntax-hint">Nhấp để chép: <code>\date{\today}</code></span>
+              <span class="syntax-desc">Khai báo ngày (hoặc <code>\today</code> để lấy tự động)</span>
+              <span class="syntax-click-hint">Chép: <code>\date{\today}</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\maketitle', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\maketitle', this)">
               <span class="syntax-code-pill">\maketitle</span>
-              <span class="syntax-desc">In khối tiêu đề ra trang văn bản</span>
-              <span class="syntax-hint">Đặt ngay sau <code>\begin{document}</code></span>
+              <span class="syntax-desc">In phần tiêu đề ra trang (sau <code>\begin{document}</code>)</span>
+              <span class="syntax-click-hint">Chép: <code>\maketitle</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\section{Thông tin chung}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\section{Thông tin chung}', this)">
               <span class="syntax-code-pill">\section{...}</span>
-              <span class="syntax-desc">Tạo tiêu đề đề mục cấp 1 được đánh số</span>
-              <span class="syntax-hint">Nhấp để chép: <code>\section{...}</code></span>
+              <span class="syntax-desc">Tạo mục lớn đánh số tự động</span>
+              <span class="syntax-click-hint">Chép: <code>\section{...}</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\textbf{In đậm}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\textbf{In đậm}', this)">
               <span class="syntax-code-pill">\textbf{...}</span>
               <span class="syntax-desc">Định dạng chữ <strong>in đậm</strong></span>
-              <span class="syntax-hint">Ví dụ: <code>\textbf{ĐH Khoa học Tự nhiên}</code></span>
+              <span class="syntax-click-hint">Chép: <code>\textbf{...}</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\textit{In nghiêng}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\textit{In nghiêng}', this)">
               <span class="syntax-code-pill">\textit{...}</span>
               <span class="syntax-desc">Định dạng chữ <em>in nghiêng</em></span>
-              <span class="syntax-hint">Ví dụ: <code>\textit{Công nghệ Thông tin}</code></span>
+              <span class="syntax-click-hint">Chép: <code>\textit{...}</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\begin{itemize}\n  \item \n\end{itemize}', this)">
-              <span class="syntax-code-pill">\begin{itemize} ...</span>
-              <span class="syntax-desc">Tạo danh sách có gạch đầu dòng</span>
-              <span class="syntax-hint">Mỗi dòng bắt đầu bằng <code>\item</code></span>
+            <div class="syntax-card" onclick="copySnippetText('\\begin{itemize}\n  \\item \n\\end{itemize}', this)">
+              <span class="syntax-code-pill">\begin{itemize}</span>
+              <span class="syntax-desc">Tạo danh sách gạch đầu dòng (mỗi dòng dùng <code>\item</code>)</span>
+              <span class="syntax-click-hint">Chép danh sách gạch dòng</span>
             </div>
           </div>
 
           <!-- LỜI GIẢI MẪU ACCORDION -->
-          <div class="solution-drawer">
-            <button class="solution-btn-toggle" onclick="toggleDrawer('drawer-ex1', this)">
-              <div style="display:flex; align-items:center;">
-                <span>💡 Gợi Ý Lời Giải Mẫu Bài 1</span>
-                <span class="toggle-badge">Mã nguồn sẵn sàng</span>
-              </div>
-              <span class="drawer-icon">▼</span>
+          <div class="solution-accordion">
+            <button class="solution-btn" onclick="toggleAccordion('sol-box-1', this)">
+              <span>💡 Xem Gợi Ý Mã Nguồn Bài 1</span>
+              <span class="acc-icon">▼</span>
             </button>
-            <div id="drawer-ex1" class="solution-body">
+            <div id="sol-box-1" class="solution-code-drawer">
               <div class="editor-topbar" style="background:#161b22;">
-                <span class="editor-meta">bai1_gioi_thieu_ban_than.tex</span>
-                <button class="btn-action" onclick="copyCodeBlock('solCode1', this)">Sao chép</button>
+                <span class="editor-tab">bai1_gioi_thieu_ban_than.tex</span>
+                <button class="btn-action" onclick="copyCodeBlock('codeSol1', this)">Sao chép</button>
               </div>
-              <pre><code id="solCode1">\documentclass[12pt,a4paper]{article}
+              <pre><code id="codeSol1">\documentclass[12pt,a4paper]{article}
 
 \usepackage{fontspec}
 \usepackage{polyglossia}
@@ -1392,93 +1351,94 @@ Dưới đây là các sở thích cá nhân của em:
 </code></pre>
             </div>
           </div>
-
         </div>
 
-        <!-- ==================== TAB BÀI 2 ==================== -->
-        <div id="pane-ex2" class="exercise-tab-pane">
-          <div class="ex-hero-box">
-            <h3>Bài 2: Soạn Thảo Biểu Thức Toán Học</h3>
-            <p>Thực hành chế độ soạn thảo công thức toán trong dòng (Inline Math) và công thức trên dòng độc lập (Display Math).</p>
+        <!-- ==================== BÀI TẬP 2 ==================== -->
+        <div id="bai-2" class="exercise-card">
+          <div class="ex-header-bar">
+            <div class="ex-title-wrap">
+              <span class="ex-badge-num">BÀI 2</span>
+              <h3 class="ex-main-title">Soạn Thảo Biểu Thức Toán Học</h3>
+            </div>
+            <span class="ex-tag-badge">Toán học &amp; Công thức</span>
           </div>
 
-          <div class="checklist-card">
-            <div class="checklist-title">
-              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-              <span>Các yêu cầu cần hoàn thành:</span>
+          <p class="ex-lead-desc">
+            Thực hành soạn thảo công thức toán nằm ngay trong dòng (Inline Math) và công thức hiển thị trên một dòng độc lập (Display Math).
+          </p>
+
+          <div class="checklist-box">
+            <div class="checklist-label">
+              <span>✓ Các yêu cầu cần hoàn thành:</span>
             </div>
             <ul class="checklist-items">
               <li>
-                <span class="check-icon">✓</span>
+                <span class="chk-icon">✓</span>
                 <span>Viết câu: <em>"Theo định lý Pytago, ta có $a^2 + b^2 = c^2$"</em> sao cho công thức toán nằm ngay trong dòng chữ (dùng cặp dấu <code>$...$</code>).</span>
               </li>
               <li>
-                <span class="check-icon">✓</span>
-                <span>Viết công thức nghiệm phương trình bậc hai trên một dòng riêng biệt căn giữa (dùng <code>\[...\]</code>) theo đúng hình mẫu sau:</span>
+                <span class="chk-icon">✓</span>
+                <span>Viết công thức nghiệm phương trình bậc hai trên một dòng riêng biệt căn giữa (dùng <code>\[...\]</code>) theo đúng hình mẫu bên dưới:</span>
               </li>
             </ul>
           </div>
 
-          <!-- FRAME HÌNH ẢNH CÔNG THỨC -->
-          <div class="formula-frame">
-            <img src="quadratic_formula.png" alt="Công thức nghiệm phương trình bậc hai" onclick="zoomImage('quadratic_formula.png')">
-            <div class="formula-caption">Hình: Công thức nghiệm phương trình bậc hai cần soạn thảo (Nhấp để phóng to)</div>
+          <!-- FRAME HÌNH CÔNG THỨC -->
+          <div class="formula-showcase">
+            <img src="quadratic_formula.png" alt="Công thức nghiệm phương trình bậc 2" onclick="zoomImage('quadratic_formula.png')">
+            <div class="formula-hint">Hình: Công thức nghiệm phương trình bậc hai cần soạn thảo (Nhấp để phóng to)</div>
           </div>
 
-          <!-- BẢNG BIỂU THỨC DẠNG CARD CHIP -->
-          <div class="syntax-section-title">
-            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            <span>Biểu thức &amp; Ký hiệu Toán học sử dụng:</span>
+          <!-- BẢNG BIỂU THỨC DẠNG CHIP -->
+          <div class="syntax-heading">
+            <span>⚡ Biểu thức &amp; Ký hiệu Toán học sử dụng:</span>
           </div>
 
           <div class="syntax-grid">
-            <div class="syntax-card" onclick="copyText('$a^2 + b^2 = c^2$', this)">
+            <div class="syntax-card" onclick="copySnippetText('$a^2 + b^2 = c^2$', this)">
               <span class="syntax-code-pill">$...$</span>
               <span class="syntax-desc">Công thức nằm <strong>ngay trong dòng</strong> (Inline math)</span>
-              <span class="syntax-hint">Ví dụ: <code>$a^2 + b^2 = c^2$</code></span>
+              <span class="syntax-click-hint">Ví dụ: <code>$a^2 + b^2 = c^2$</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\[ x = ... \]', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\[ x = ... \\]', this)">
               <span class="syntax-code-pill">\[...\]</span>
               <span class="syntax-desc">Công thức nằm trên <strong>một dòng riêng</strong> căn giữa</span>
-              <span class="syntax-hint">Display math không đánh số</span>
+              <span class="syntax-click-hint">Display math căn giữa</span>
             </div>
-            <div class="syntax-card" onclick="copyText('^2', this)">
+            <div class="syntax-card" onclick="copySnippetText('^2', this)">
               <span class="syntax-code-pill">^</span>
-              <span class="syntax-desc">Tạo số mũ hoặc chỉ số trên</span>
-              <span class="syntax-hint">Ví dụ: <code>a^2</code> hoặc <code>b^{10}</code></span>
+              <span class="syntax-desc">Tạo số mũ hoặc lũy thừa trên</span>
+              <span class="syntax-click-hint">Ví dụ: <code>a^2</code> hoặc <code>b^{10}</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\frac{tử}{mẫu}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\frac{tử}{mẫu}', this)">
               <span class="syntax-code-pill">\frac{tử}{mẫu}</span>
-              <span class="syntax-desc">Tạo phân số toán học chuyên nghiệp</span>
-              <span class="syntax-hint">Ví dụ: <code>\frac{-b}{2a}</code></span>
+              <span class="syntax-desc">Tạo phân số toán học</span>
+              <span class="syntax-click-hint">Ví dụ: <code>\frac{-b}{2a}</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\pm', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\pm', this)">
               <span class="syntax-code-pill">\pm</span>
               <span class="syntax-desc">Tạo dấu cộng trừ ($\pm$)</span>
-              <span class="syntax-hint">Ký hiệu toán học: $\pm$</span>
+              <span class="syntax-click-hint">Ký hiệu: $\pm$</span>
             </div>
-            <div class="syntax-card" onclick="copyText('\sqrt{b^2 - 4ac}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\sqrt{b^2 - 4ac}', this)">
               <span class="syntax-code-pill">\sqrt{...}</span>
               <span class="syntax-desc">Tạo dấu căn bậc hai</span>
-              <span class="syntax-hint">Ví dụ: <code>\sqrt{b^2 - 4ac}</code></span>
+              <span class="syntax-click-hint">Ví dụ: <code>\sqrt{b^2 - 4ac}</code></span>
             </div>
           </div>
 
           <!-- LỜI GIẢI MẪU ACCORDION -->
-          <div class="solution-drawer">
-            <button class="solution-btn-toggle" onclick="toggleDrawer('drawer-ex2', this)">
-              <div style="display:flex; align-items:center;">
-                <span>💡 Gợi Ý Lời Giải Mẫu Bài 2</span>
-                <span class="toggle-badge">Mã nguồn sẵn sàng</span>
-              </div>
-              <span class="drawer-icon">▼</span>
+          <div class="solution-accordion">
+            <button class="solution-btn" onclick="toggleAccordion('sol-box-2', this)">
+              <span>💡 Xem Gợi Ý Mã Nguồn Bài 2</span>
+              <span class="acc-icon">▼</span>
             </button>
-            <div id="drawer-ex2" class="solution-body">
+            <div id="sol-box-2" class="solution-code-drawer">
               <div class="editor-topbar" style="background:#161b22;">
-                <span class="editor-meta">bai2_bieu_thuc_toan_hoc.tex</span>
-                <button class="btn-action" onclick="copyCodeBlock('solCode2', this)">Sao chép</button>
+                <span class="editor-tab">bai2_bieu_thuc_toan_hoc.tex</span>
+                <button class="btn-action" onclick="copyCodeBlock('codeSol2', this)">Sao chép</button>
               </div>
-              <pre><code id="solCode2">\documentclass[12pt,a4paper]{article}
+              <pre><code id="codeSol2">\documentclass[12pt,a4paper]{article}
 
 \usepackage{fontspec}
 \usepackage{polyglossia}
@@ -1503,105 +1463,106 @@ Nghiệm của phương trình bậc hai tổng quát $ax^2 + bx + c = 0$ ($a \n
 </code></pre>
             </div>
           </div>
-
         </div>
 
-        <!-- ==================== TAB BÀI 3 ==================== -->
-        <div id="pane-ex3" class="exercise-tab-pane">
-          <div class="ex-hero-box">
-            <h3>Bài 3: Tạo Bảng Danh Sách Môn Học</h3>
-            <p>Luyện tập kỹ năng kẻ bảng, đặt tiêu đề bảng biểu, phân cách dữ liệu giữa các ô và căn chỉnh lề cột.</p>
+        <!-- ==================== BÀI TẬP 3 ==================== -->
+        <div id="bai-3" class="exercise-card">
+          <div class="ex-header-bar">
+            <div class="ex-title-wrap">
+              <span class="ex-badge-num">BÀI 3</span>
+              <h3 class="ex-main-title">Tạo Bảng Danh Sách Môn Học</h3>
+            </div>
+            <span class="ex-tag-badge">Bảng biểu &amp; Tabular</span>
           </div>
 
-          <div class="checklist-card">
-            <div class="checklist-title">
-              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-              <span>Các yêu cầu cần hoàn thành:</span>
+          <p class="ex-lead-desc">
+            Luyện tập kỹ năng tạo bảng biểu khoa học có tiêu đề, kẻ đường viền ngang/dọc, ngăn cách ô và căn chỉnh lề các cột.
+          </p>
+
+          <div class="checklist-box">
+            <div class="checklist-label">
+              <span>✓ Các yêu cầu cần hoàn thành:</span>
             </div>
             <ul class="checklist-items">
               <li>
-                <span class="check-icon">✓</span>
+                <span class="chk-icon">✓</span>
                 <span>Tạo bảng có tiêu đề: <strong>“Thời khóa biểu học kỳ”</strong> (dùng lệnh <code>\caption</code>).</span>
               </li>
               <li>
-                <span class="check-icon">✓</span>
+                <span class="chk-icon">✓</span>
                 <span>Bảng gồm đúng <strong>3 cột</strong>: <code>Tên học phần</code>, <code>Số tín chỉ</code>, <code>Phòng học</code> và có dữ liệu 3 môn học bất kỳ.</span>
               </li>
               <li>
-                <span class="check-icon">✓</span>
-                <span>Cột <em>Tên học phần</em> căn lề trái (<code>l</code>), hai cột còn lại căn giữa (<code>c</code>). Khai báo: <code>{|l|c|c|}</code>.</span>
+                <span class="chk-icon">✓</span>
+                <span>Cột <em>Tên học phần</em> căn lề trái (<code>l</code>), hai cột còn lại căn giữa (<code>c</code>). Khai báo cấu trúc: <code>{|l|c|c|}</code>.</span>
               </li>
               <li>
-                <span class="check-icon">✓</span>
+                <span class="chk-icon">✓</span>
                 <span>Kẻ đầy đủ đường viền ngang (<code>\hline</code>) và đường viền dọc (<code>|</code>), căn giữa toàn bộ bảng trên trang (<code>\centering</code>).</span>
               </li>
             </ul>
           </div>
 
-          <!-- BẢNG BIỂU THỨC DẠNG CARD CHIP -->
-          <div class="syntax-section-title">
-            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            <span>Biểu thức &amp; Lệnh tạo Bảng sử dụng:</span>
+          <!-- BẢNG BIỂU THỨC DẠNG CHIP -->
+          <div class="syntax-heading">
+            <span>⚡ Biểu thức &amp; Lệnh tạo Bảng sử dụng:</span>
           </div>
 
           <div class="syntax-grid">
-            <div class="syntax-card" onclick="copyText('\begin{table}[h]\n  \centering\n\end{table}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\begin{table}[h]\n  \\centering\n\\end{table}', this)">
               <span class="syntax-code-pill">\begin{table}[h]</span>
               <span class="syntax-desc">Khung chứa bảng nổi, vị trí hiện tại (here)</span>
-              <span class="syntax-hint">Đảm bảo bảng không bị nhảy trang lung tung</span>
+              <span class="syntax-click-hint">Chép khung <code>table</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\centering', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\centering', this)">
               <span class="syntax-code-pill">\centering</span>
               <span class="syntax-desc">Căn giữa toàn bộ bảng trên trang giấy</span>
-              <span class="syntax-hint">Đặt ngay sau <code>\begin{table}</code></span>
+              <span class="syntax-click-hint">Chép: <code>\centering</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\caption{Thời khóa biểu học kỳ}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\caption{Thời khóa biểu học kỳ}', this)">
               <span class="syntax-code-pill">\caption{...}</span>
               <span class="syntax-desc">Đặt tiêu đề và tự động đánh số thứ tự bảng</span>
-              <span class="syntax-hint">Ví dụ: <code>\caption{Thời khóa biểu học kỳ}</code></span>
+              <span class="syntax-click-hint">Chép: <code>\caption{...}</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\begin{tabular}{|l|c|c|}\n  \hline\n\end{tabular}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\begin{tabular}{|l|c|c|}\n  \\hline\n\\end{tabular}', this)">
               <span class="syntax-code-pill">\begin{tabular}</span>
               <span class="syntax-desc">Môi trường kẻ các ô bảng, định nghĩa số cột</span>
-              <span class="syntax-hint"><code>l</code> = trái, <code>c</code> = giữa, <code>r</code> = phải</span>
+              <span class="syntax-click-hint"><code>l</code> = trái, <code>c</code> = giữa, <code>r</code> = phải</span>
             </div>
-            <div class="syntax-card" onclick="copyText('|', this)">
+            <div class="syntax-card" onclick="copySnippetText('|', this)">
               <span class="syntax-code-pill">| (gạch đứng)</span>
               <span class="syntax-desc">Kẻ đường viền dọc ngăn cách giữa các cột</span>
-              <span class="syntax-hint">Ví dụ: <code>|l|c|c|</code></span>
+              <span class="syntax-click-hint">Ví dụ: <code>|l|c|c|</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\hline', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\hline', this)">
               <span class="syntax-code-pill">\hline</span>
               <span class="syntax-desc">Kẻ đường viền ngang phân chia các hàng</span>
-              <span class="syntax-hint">Đặt sau mỗi hàng kết thúc bằng <code>\\</code></span>
+              <span class="syntax-click-hint">Chép: <code>\hline</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText(' & ', this)">
+            <div class="syntax-card" onclick="copySnippetText(' & ', this)">
               <span class="syntax-code-pill">&amp;</span>
-              <span class="syntax-desc">Dấu phân cách dữ liệu giữa các ô trong 1 hàng</span>
-              <span class="syntax-hint">Cột 1 &amp; Cột 2 &amp; Cột 3</span>
+              <span class="syntax-desc">Dấu phân cách dữ liệu giữa các ô trong cùng 1 hàng</span>
+              <span class="syntax-click-hint">Cột 1 &amp; Cột 2 &amp; Cột 3</span>
             </div>
-            <div class="syntax-card" onclick="copyText('\\\\ \hline', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\\\ \\hline', this)">
               <span class="syntax-code-pill">\\</span>
               <span class="syntax-desc">Xuống dòng để kết thúc một hàng</span>
-              <span class="syntax-hint">Cú pháp thường dùng: <code>\\ \hline</code></span>
+              <span class="syntax-click-hint">Chép: <code>\\ \hline</code></span>
             </div>
           </div>
 
           <!-- LỜI GIẢI MẪU ACCORDION -->
-          <div class="solution-drawer">
-            <button class="solution-btn-toggle" onclick="toggleDrawer('drawer-ex3', this)">
-              <div style="display:flex; align-items:center;">
-                <span>💡 Gợi Ý Lời Giải Mẫu Bài 3</span>
-                <span class="toggle-badge">Mã nguồn sẵn sàng</span>
-              </div>
-              <span class="drawer-icon">▼</span>
+          <div class="solution-accordion">
+            <button class="solution-btn" onclick="toggleAccordion('sol-box-3', this)">
+              <span>💡 Xem Gợi Ý Mã Nguồn Bài 3</span>
+              <span class="acc-icon">▼</span>
             </button>
-            <div id="drawer-ex3" class="solution-body">
+            <div id="sol-box-3" class="solution-code-drawer">
               <div class="editor-topbar" style="background:#161b22;">
-                <span class="editor-meta">bai3_bang_mon_hoc.tex</span>
-                <button class="btn-action" onclick="copyCodeBlock('solCode3', this)">Sao chép</button>
+                <span class="editor-tab">bai3_bang_mon_hoc.tex</span>
+                <button class="btn-action" onclick="copyCodeBlock('codeSol3', this)">Sao chép</button>
               </div>
-              <pre><code id="solCode3">\documentclass[12pt,a4paper]{article}
+              <pre><code id="codeSol3">\documentclass[12pt,a4paper]{article}
 
 \usepackage{fontspec}
 \usepackage{polyglossia}
@@ -1633,101 +1594,102 @@ Nghiệm của phương trình bậc hai tổng quát $ax^2 + bx + c = 0$ ($a \n
 </code></pre>
             </div>
           </div>
-
         </div>
 
-        <!-- ==================== TAB BÀI 4 ==================== -->
-        <div id="pane-ex4" class="exercise-tab-pane">
-          <div class="ex-hero-box">
-            <h3>Bài 4: Chèn Hình Ảnh Logo Vào Báo Cáo</h3>
-            <p>Luyện tập upload tệp đa phương tiện lên dự án, chèn hình căn giữa trang và gán nhãn tham chiếu chéo.</p>
+        <!-- ==================== BÀI TẬP 4 ==================== -->
+        <div id="bai-4" class="exercise-card">
+          <div class="ex-header-bar">
+            <div class="ex-title-wrap">
+              <span class="ex-badge-num">BÀI 4</span>
+              <h3 class="ex-main-title">Chèn Hình Ảnh Logo Vào Báo Cáo</h3>
+            </div>
+            <span class="ex-tag-badge">Đồ họa &amp; Figure</span>
           </div>
 
-          <div class="checklist-card">
-            <div class="checklist-title">
-              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-              <span>Các yêu cầu cần hoàn thành:</span>
+          <p class="ex-lead-desc">
+            Luyện tập upload tệp đa phương tiện lên Overleaf, chèn hình căn giữa trang, chỉnh tỷ lệ co giãn và gán nhãn tham chiếu chéo.
+          </p>
+
+          <div class="checklist-box">
+            <div class="checklist-label">
+              <span>✓ Các yêu cầu cần hoàn thành:</span>
             </div>
             <ul class="checklist-items">
               <li>
-                <span class="check-icon">✓</span>
+                <span class="chk-icon">✓</span>
                 <span>Tải một bức ảnh bất kỳ từ máy tính lên dự án Overleaf (bấm nút <strong>Upload</strong> ở góc trên bên trái) và đổi tên thành <code>logo.png</code>.</span>
               </li>
               <li>
-                <span class="check-icon">✓</span>
+                <span class="chk-icon">✓</span>
                 <span>Khai báo gói lệnh chèn ảnh bắt buộc: <code>\usepackage{graphicx}</code> ở phần đầu bài viết.</span>
               </li>
               <li>
-                <span class="check-icon">✓</span>
+                <span class="chk-icon">✓</span>
                 <span>Chèn ảnh vào giữa trang với độ rộng co giãn chính xác bằng <strong>0.5 lần chiều rộng văn bản</strong> (<code>width=0.5\textwidth</code>).</span>
               </li>
               <li>
-                <span class="check-icon">✓</span>
+                <span class="chk-icon">✓</span>
                 <span>Thêm dòng chú thích bên dưới ảnh: <strong>"Logo trường"</strong> (dùng lệnh <code>\caption</code>).</span>
               </li>
               <li>
-                <span class="check-icon">✓</span>
+                <span class="chk-icon">✓</span>
                 <span>Gán nhãn định danh cho ảnh bằng <code>\label{fig:logo}</code> để đánh số thứ tự hình ảnh tự động.</span>
               </li>
             </ul>
           </div>
 
-          <!-- BẢNG BIỂU THỨC DẠNG CARD CHIP -->
-          <div class="syntax-section-title">
-            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            <span>Biểu thức &amp; Lệnh chèn Hình ảnh sử dụng:</span>
+          <!-- BẢNG BIỂU THỨC DẠNG CHIP -->
+          <div class="syntax-heading">
+            <span>⚡ Biểu thức &amp; Lệnh chèn Hình ảnh sử dụng:</span>
           </div>
 
           <div class="syntax-grid">
-            <div class="syntax-card" onclick="copyText('\usepackage{graphicx}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\usepackage{graphicx}', this)">
               <span class="syntax-code-pill">\usepackage{graphicx}</span>
               <span class="syntax-desc">Gói lệnh đồ họa bắt buộc để nhúng hình ảnh</span>
-              <span class="syntax-hint">Khai báo trước <code>\begin{document}</code></span>
+              <span class="syntax-click-hint">Khai báo trước <code>\begin{document}</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\begin{figure}[h]\n  \centering\n\end{figure}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\begin{figure}[h]\n  \\centering\n\\end{figure}', this)">
               <span class="syntax-code-pill">\begin{figure}[h]</span>
               <span class="syntax-desc">Môi trường chứa hình ảnh nổi trong văn bản</span>
-              <span class="syntax-hint">Giữ hình ảnh đúng vị trí trên trang</span>
+              <span class="syntax-click-hint">Chép khung <code>figure</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\centering', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\centering', this)">
               <span class="syntax-code-pill">\centering</span>
               <span class="syntax-desc">Căn giữa hình ảnh trên trang giấy</span>
-              <span class="syntax-hint">Đặt ngay sau <code>\begin{figure}</code></span>
+              <span class="syntax-click-hint">Chép: <code>\centering</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\includegraphics[width=0.5\textwidth]{logo.png}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\includegraphics[width=0.5\\textwidth]{logo.png}', this)">
               <span class="syntax-code-pill">\includegraphics[...]</span>
               <span class="syntax-desc">Lệnh nhúng tệp hình ảnh vào bài viết</span>
-              <span class="syntax-hint">Ví dụ: <code>\includegraphics[...]{logo.png}</code></span>
+              <span class="syntax-click-hint">Ví dụ: <code>\includegraphics[...]{logo.png}</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('width=0.5\textwidth', this)">
+            <div class="syntax-card" onclick="copySnippetText('width=0.5\\textwidth', this)">
               <span class="syntax-code-pill">width=0.5\textwidth</span>
               <span class="syntax-desc">Tham số chỉnh độ rộng bằng 50% chiều rộng dòng chữ</span>
-              <span class="syntax-hint">Tự động co giãn theo khổ trang giấy</span>
+              <span class="syntax-click-hint">Tự động co giãn theo khổ trang giấy</span>
             </div>
-            <div class="syntax-card" onclick="copyText('\caption{Logo trường}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\caption{Logo trường}', this)">
               <span class="syntax-code-pill">\caption{...}</span>
               <span class="syntax-desc">Thêm dòng chú thích và đánh số "Hình 1:"</span>
-              <span class="syntax-hint">Ví dụ: <code>\caption{Logo trường}</code></span>
+              <span class="syntax-click-hint">Ví dụ: <code>\caption{Logo trường}</code></span>
             </div>
-            <div class="syntax-card" onclick="copyText('\label{fig:logo}', this)">
+            <div class="syntax-card" onclick="copySnippetText('\\label{fig:logo}', this)">
               <span class="syntax-code-pill">\label{fig:...}</span>
               <span class="syntax-desc">Gán nhãn để tham chiếu tự động trong bài viết</span>
-              <span class="syntax-hint">Tham chiếu qua <code>\ref{fig:logo}</code></span>
+              <span class="syntax-click-hint">Tham chiếu qua <code>\ref{fig:logo}</code></span>
             </div>
           </div>
 
           <!-- LỜI GIẢI MẪU ACCORDION -->
-          <div class="solution-drawer">
-            <button class="solution-btn-toggle" onclick="toggleDrawer('drawer-ex4', this)">
-              <div style="display:flex; align-items:center;">
-                <span>💡 Gợi Ý Lời Giải Mẫu Bài 4</span>
-                <span class="toggle-badge">Mã nguồn sẵn sàng</span>
-              </div>
-              <span class="drawer-icon">▼</span>
+          <div class="solution-accordion">
+            <button class="solution-btn" onclick="toggleAccordion('sol-box-4', this)">
+              <span>💡 Xem Gợi Ý Mã Nguồn Bài 4</span>
+              <span class="acc-icon">▼</span>
             </button>
-            <div id="drawer-ex4" class="solution-body">
+            <div id="sol-box-4" class="solution-code-drawer">
               <div class="editor-topbar" style="background:#161b22;">
-                <span class="editor-meta">bai4_chen_hinh_anh.tex</span>
+                <span class="editor-tab">bai4_chen_hinh_anh.tex</span>
                 <button class="btn-action" onclick="copyCodeBlock('solCode4', this)">Sao chép</button>
               </div>
               <pre><code id="solCode4">\documentclass[12pt,a4paper]{article}
@@ -1758,7 +1720,6 @@ Dưới đây là hình ảnh biểu trưng chính thức được hiển thị 
 </code></pre>
             </div>
           </div>
-
         </div>
 
       </div>
@@ -1773,18 +1734,18 @@ Dưới đây là hình ảnh biểu trưng chính thức được hiển thị 
 
   <!-- TOAST NOTIFICATION -->
   <div id="toast" class="toast">
-    <svg width="18" height="18" fill="none" stroke="#34d399" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+    <svg width="16" height="16" fill="none" stroke="#34d399" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
     <span id="toastMsg">Đã sao chép vào bộ nhớ tạm!</span>
   </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>© LTD KHMT.</p>
+      <p>© 2026 LTD KHMT.</p>
     </div>
   </footer>
 
-  <!-- JAVASCRIPT LOGIC -->
+  <!-- SCRIPT -->
   <script>
     // Toast Notification helper
     function showToast(message) {
@@ -1794,54 +1755,42 @@ Dưới đây là hình ảnh biểu trưng chính thức được hiển thị 
       toast.classList.add('show');
       setTimeout(() => {
         toast.classList.remove('show');
-      }, 2200);
+      }, 2000);
     }
 
-    // Copy block code
+    // Copy entire code block
     function copyCodeBlock(elementId, btn) {
       const code = document.getElementById(elementId).innerText;
       navigator.clipboard.writeText(code).then(() => {
         const originalText = btn.innerHTML;
         btn.classList.add('copied');
         btn.innerHTML = `<span>Đã sao chép!</span>`;
-        showToast('Đã sao chép mã nguồn vào bộ nhớ tạm!');
+        showToast('Đã sao chép mã nguồn!');
         setTimeout(() => {
           btn.classList.remove('copied');
           btn.innerHTML = originalText;
-        }, 2000);
+        }, 1800);
       }).catch(err => {
         alert('Lỗi khi sao chép: ' + err);
       });
     }
 
-    // Copy single text snippet from syntax chips
-    function copyText(text, cardEl) {
+    // Copy single snippet chip
+    function copySnippetText(text, cardEl) {
       navigator.clipboard.writeText(text).then(() => {
-        showToast(`Đã sao chép: ${text.slice(0, 30)}...`);
+        showToast(`Đã sao chép: ${text.slice(0, 25)}...`);
         cardEl.style.borderColor = 'var(--brand)';
         setTimeout(() => {
           cardEl.style.borderColor = '';
-        }, 1200);
+        }, 1000);
       });
     }
 
-    // Switch Exercise Tabs
-    function showExerciseTab(evt, paneId) {
-      const panes = document.querySelectorAll('.exercise-tab-pane');
-      panes.forEach(p => p.classList.remove('active'));
-
-      const btns = document.querySelectorAll('.exercise-pill-btn');
-      btns.forEach(b => b.classList.remove('active'));
-
-      document.getElementById(paneId).classList.add('active');
-      evt.currentTarget.classList.add('active');
-    }
-
-    // Toggle Solution Drawer Accordion
-    function toggleDrawer(drawerId, btn) {
+    // Toggle Solution Accordion
+    function toggleAccordion(drawerId, btn) {
       const drawer = document.getElementById(drawerId);
       drawer.classList.toggle('open');
-      const icon = btn.querySelector('.drawer-icon');
+      const icon = btn.querySelector('.acc-icon');
       if (drawer.classList.contains('open')) {
         icon.innerText = '▲';
       } else {
@@ -1849,7 +1798,7 @@ Dưới đây là hình ảnh biểu trưng chính thức được hiển thị 
       }
     }
 
-    // Lightbox image viewer
+    // Lightbox image zoom
     function zoomImage(src) {
       const lightbox = document.getElementById('lightbox');
       const img = document.getElementById('lightboxImg');
@@ -1862,7 +1811,7 @@ Dưới đây là hình ảnh biểu trưng chính thức được hiển thị 
       lightbox.classList.remove('active');
     }
 
-    // ESC to close lightbox
+    // ESC key closes lightbox
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeLightbox();
