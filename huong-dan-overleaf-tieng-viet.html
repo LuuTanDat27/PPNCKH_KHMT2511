@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hướng Dẫn Thiết Lập Tiếng Việt Trên Overleaf &amp; Code Mẫu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-subtle: #f1f5f9;
+      --border: #e2e8f0;
+      --border-focus: #cbd5e1;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-soft: #94a3b8;
+      
+      /* Gam màu tối giản, tinh tế */
+      --brand: #0f766e;
+      --brand-hover: #115e59;
+      --brand-light: #f0fdfa;
+      --brand-border: #ccfbf1;
+      
+      --code-bg: #0f172a;
+      --code-border: #1e293b;
+      --code-text: #e2e8f0;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 14px -2px rgba(15, 23, 42, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15.5px;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 96px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 44px 0 34px;
+      margin-bottom: 40px;
+    }
+
+    .header-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--brand-light);
+      color: var(--brand);
+      border: 1px solid var(--brand-border);
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 14px;
+    }
+
+    .header-pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brand);
+    }
+
+    h1 {
+      font-size: clamp(26px, 3.5vw, 35px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .header-desc {
+      font-size: 15.5px;
+      color: var(--text-muted);
+      max-width: 740px;
+      line-height: 1.6;
+    }
+
+    /* SECTION BASICS */
+    section {
+      margin-bottom: 48px;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brand);
+      background: var(--brand-light);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 28px;
+    }
+
+    /* STEP BY STEP UI */
+    .step-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    .step-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--text);
+      color: var(--surface);
+      font-weight: 700;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-number.success {
+      background: var(--brand);
+    }
+
+    .step-body h3 {
+      font-size: 17.5px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .step-body p {
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+
+    /* IMAGE SHOWCASE */
+    .image-preview-card {
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      cursor: zoom-in;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .image-preview-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #cbd5e1;
+    }
+
+    .image-preview-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+    }
+
+    .image-caption {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4px;
+    }
+
+    .image-zoom-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--brand);
+      font-weight: 500;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 32px 0;
+    }
+
+    /* CODE BOX */
+    .code-wrapper {
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .code-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 18px;
+      background: #090e17;
+      border-bottom: 1px solid var(--code-border);
+    }
+
+    .code-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .code-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .code-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #334155;
+    }
+
+    .btn-copy {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-copy:hover {
+      background: #334155;
+      color: #38bdf8;
+    }
+
+    .btn-copy.copied {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: white;
+    }
+
+    pre code {
+      display: block;
+      padding: 24px;
+      color: var(--code-text);
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 13.5px;
+      line-height: 1.68;
+      overflow-x: auto;
+      max-height: 600px;
+      scrollbar-width: thin;
+      scrollbar-color: #334155 transparent;
+    }
+
+    /* EXERCISE SECTION (BÀI TẬP RIÊNG) */
+    .exercise-box {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-md);
+      padding: 40px 32px;
+      text-align: center;
+      background: #fafbfc;
+      transition: all 0.2s;
+    }
+
+    .exercise-box:hover {
+      border-color: var(--border-focus);
+      background: var(--surface);
+    }
+
+    .exercise-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--brand);
+      background: var(--brand-light);
+      border: 1px solid var(--brand-border);
+      padding: 4px 12px;
+      border-radius: 99px;
+      margin-bottom: 14px;
+    }
+
+    .exercise-box h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .exercise-box p {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 560px;
+      margin: 0 auto 20px;
+    }
+
+    .exercise-placeholder-slots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      max-width: 780px;
+      margin: 24px auto 0;
+      text-align: left;
+    }
+
+    .slot-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .slot-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .slot-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .slot-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* LIGHTBOX MODAL CHO ẢNH */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      padding: 24px;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 94vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      object-fit: contain;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 13.5px;
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 680px) {
+      .step-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-pill">Hướng dẫn LaTeX Overleaf</div>
+      <h1>Cài Đặt Môi Trường Tiếng Việt &amp; Code Mẫu</h1>
+      <p class="header-desc">
+        Hướng dẫn các bước cấu hình trình biên dịch XeLaTeX trên Overleaf, dán mã nguồn mẫu kiểm thử môi trường và hình ảnh kết quả biên dịch thành công.
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container">
+
+    <!-- PHẦN 1: HƯỚNG DẪN CÀI ĐẶT MÔI TRƯỜNG -->
+    <section id="cai-dat">
+      <div class="section-title-wrap">
+        <span class="section-tag">01</span>
+        <h2>Hướng Dẫn Cài Đặt Môi Trường</h2>
+      </div>
+
+      <div class="card">
+        <!-- BƯỚC 1 -->
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-body">
+            <h3>Mở bảng cài đặt dự án (Settings)</h3>
+            <p>
+              Tại màn hình soạn thảo Overleaf, nhấp vào biểu tượng <strong>bánh răng Cài đặt (⚙️ Settings)</strong> ở thanh công cụ góc dưới cùng bên trái màn hình.
+            </p>
+            <div class="image-preview-card" onclick="openLightbox('images/step1_overleaf_editor.png')">
+              <img src="images/step1_overleaf_editor.png" alt="Bước 1: Bấm vào biểu tượng cài đặt Settings ở góc dưới bên trái">
+              <div class="image-caption">
+                <span>Hình 1: Vị trí nút Settings (⚙️) trên thanh công cụ Overleaf</span>
+                <span class="image-zoom-hint">🔍 Nhấp để phóng to</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- BƯỚC 2 -->
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-body">
+            <h3>Cấu hình Compiler thành XeLaTeX &amp; TeX Live 2026</h3>
+            <p>
+              Khi hộp thoại <strong>Settings</strong> hiện lên:
+              <br>• Nhấp chọn mục <strong>Compiler</strong> ở cột menu bên trái.
+              <br>• Tại dòng <strong>Compiler</strong>: Chuyển đổi thành <strong>XeLaTeX</strong>.
+              <br>• Tại dòng <strong>TeX Live version</strong>: Chọn phiên bản <strong>2026</strong>.
+            </p>
+            <div class="image-preview-card" onclick="openLightbox('images/step2_overleaf_settings.png')">
+              <img src="images/step2_overleaf_settings.png" alt="Bước 2: Chuyển Compiler sang XeLaTeX và TeX Live version sang 2026">
+              <div class="image-caption">
+                <span>Hình 2: Cấu hình Compiler = XeLaTeX và TeX Live version = 2026</span>
+                <span class="image-zoom-hint">🔍 Nhấp để phóng to</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- BƯỚC 3 -->
+        <div class="step-item">
+          <div class="step-number success">3</div>
+          <div class="step-body">
+            <h3>Dán mã nguồn và nhấn Recompile để kiểm tra kết quả</h3>
+            <p>
+              Đóng hộp thoại Settings, dán toàn bộ đoạn code ở mục 02 vào tệp <code>main.tex</code>, sau đó bấm nút xanh <strong>Recompile</strong> (hoặc nhấn <code>Ctrl + Enter</code>). Màn hình xem trước PDF bên phải sẽ hiển thị bản báo cáo tiếng Việt hoàn chỉnh, chuẩn đẹp không lỗi font.
+            </p>
+            <div class="image-preview-card" onclick="openLightbox('images/step3_overleaf_success.png')">
+              <img src="images/step3_overleaf_success.png" alt="Bước 3: Nhấn nút Recompile và kiểm tra kết quả hiển thị file PDF tiếng Việt">
+              <div class="image-caption">
+                <span>Hình 3: Kết quả biên dịch thành công sau khi nhấn Recompile</span>
+                <span class="image-zoom-hint">🔍 Nhấp để phóng to</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PHẦN 2: CODE MẪU TEST MÔI TRƯỜNG -->
+    <section id="code-mau">
+      <div class="section-title-wrap">
+        <span class="section-tag">02</span>
+        <h2>Code Mẫu Kiểm Thử Môi Trường</h2>
+      </div>
+
+      <p style="margin-bottom: 16px; color: var(--text-muted);">
+        Sao chép toàn bộ đoạn mã nguồn dưới đây dán vào tệp <code>main.tex</code> trên Overleaf để kiểm tra:
+      </p>
+
+      <div class="code-wrapper">
+        <div class="code-topbar">
+          <div class="code-title">
+            <div class="code-dots">
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+            </div>
+            <span>main.tex</span>
+          </div>
+          <div class="code-actions">
+            <button class="btn-copy" id="copyBtn" onclick="copyCode()">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+              </svg>
+              <span id="copyText">Sao chép mã</span>
+            </button>
+          </div>
+        </div>
+        <pre><code id="latexCode">\documentclass[12pt,a4paper]{article}
+
+% Overleaf: Menu -> Compiler -> XeLaTeX
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{vietnamese}
+\setmainfont{TeX Gyre Termes}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    frame=single,
+    breaklines=true,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red},
+    showstringspaces=false
+}
+
+\title{\textbf{BÁO CÁO ĐỒ ÁN MÔN HỌC}}
+\author{Họ và tên sinh viên}
+\date{Ngày 10 tháng 11 năm 2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Giới thiệu}
+Đây là báo cáo thử nghiệm biên dịch tiếng Việt trên môi trường Overleaf sử dụng trình biên dịch \textbf{XeLaTeX}. Môi trường này hỗ trợ đầy đủ các ký tự tiếng Việt có dấu: Ă, Â, Đ, Ê, Ô, Ơ, Ư cùng toàn bộ các thanh điệu chuẩn xác.
+
+\section{Phương pháp}
+Xét hàm mục tiêu tối ưu hóa trong bài toán phân loại:
+\begin{equation}
+    f(x) = \frac{1}{1 + e^{-(\mathbf{w}^T \mathbf{x} + b)}}
+\end{equation}
+
+\section{Kết quả}
+Dưới đây là bảng tổng hợp kết quả đánh giá thực nghiệm:
+\begin{table}[htbp]
+    \centering
+    \caption{Kết quả đánh giá mô hình}
+    \begin{tabular}{lccc}
+        \toprule
+        \textbf{Phương pháp} & \textbf{Độ chính xác (Accuracy)} & \textbf{F1-Score} \\
+        \midrule
+        Mô hình cơ sở & 85.4\% & 0.84 \\
+        Mô hình cải tiến & \textbf{93.8\%} & \textbf{0.92} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Mã nguồn}
+Mã nguồn hàm tiền xử lý dữ liệu viết bằng Python:
+\begin{lstlisting}[language=Python]
+def chuan_hoa_tieng_viet(van_ban):
+    # Loai bo khoang trang va chuyen ve chu thuong
+    return van_ban.strip().lower()
+
+print(chuan_hoa_tieng_viet("Dai Hoc Quoc Gia"))
+\end{lstlisting}
+
+\section{Kết luận}
+Môi trường biên dịch \LaTeX\ tiếng Việt đã được cấu hình thành công và sẵn sàng để thực hiện các bài tập tiếp theo.
+
+\end{document}
+</code></pre>
+      </div>
+    </section>
+
+    <!-- PHẦN 3: BÀI TẬP THỰC HÀNH (KHU VỰC RIÊNG SẴN SÀNG) -->
+    <section id="bai-tap">
+      <div class="section-title-wrap">
+        <span class="section-tag">03</span>
+        <h2>Bài Tập Thực Hành</h2>
+      </div>
+
+      <div class="exercise-box">
+        <span class="exercise-badge">Khu vực đề bài</span>
+        <h3>Danh Sách Bài Tập Thực Hành</h3>
+        <p>
+          Phần này dành riêng để cập nhật các yêu cầu, đề bài và bài tập thực hành soạn thảo văn bản khoa học tiếng Việt.
+        </p>
+
+        <div class="exercise-placeholder-slots">
+          <div class="slot-item">
+            <div class="slot-label">Trạng thái</div>
+            <div class="slot-title">Sẵn sàng nhận đề bài</div>
+            <div class="slot-desc">Đang chờ bạn gửi nội dung bài tập tiếp theo để cập nhật vào đây.</div>
+          </div>
+          <div class="slot-item">
+            <div class="slot-label">Định dạng nộp bài</div>
+            <div class="slot-title">File .tex &amp; PDF</div>
+            <div class="slot-desc">Soạn thảo trực tiếp trên Overleaf theo mẫu quy chuẩn đã thiết lập.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+    <img id="lightboxImg" class="lightbox-content" src="" alt="Phóng to">
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>Tài liệu hướng dẫn soạn thảo khoa học LaTeX tiếng Việt — Cấu hình Overleaf XeLaTeX</p>
+    </div>
+  </footer>
+
+  <script>
+    // Copy Code Functionality
+    function copyCode() {
+      const codeText = document.getElementById('latexCode').innerText;
+      const copyBtn = document.getElementById('copyBtn');
+      const copyText = document.getElementById('copyText');
+
+      navigator.clipboard.writeText(codeText).then(() => {
+        copyBtn.classList.add('copied');
+        copyText.innerText = 'Đã sao chép!';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyText.innerText = 'Sao chép mã';
+        }, 2000);
+      }).catch(err => {
+        alert('Lỗi sao chép: ' + err);
+      });
+    }
+
+    // Lightbox Functionality
+    function openLightbox(src) {
+      const modal = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      modal.classList.add('active');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox');
+      modal.classList.remove('active');
+    }
+
+    // Close lightbox on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
